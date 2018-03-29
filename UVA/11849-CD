@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef set<int> si;
+
+int main(){
+	
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	
+	si s;
+	int test1, test2, val;
+	
+	while(cin >> test1 >> test2) {
+	
+		if(!test1 && !test2) return 0;
+		 
+		for(int i = 0; i < test1; i++){
+			cin >> val;
+			s.insert(val);
+		}
+		
+		for(int i = 0; i < test2; i++){
+			cin >> val;
+			s.insert(val);
+		}
+		
+		cout << (test1 + test2) - s.size() << endl;
+		s.clear();
+	}
+}
