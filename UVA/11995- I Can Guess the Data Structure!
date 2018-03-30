@@ -1,0 +1,58 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef stack<int> si;
+typedef queue<int> qi;
+typedef priority_queue<int> pqi;
+
+
+int main() {
+
+	ios_base::sync_with_stdio(false);
+	cin.tie(0);
+	
+	int test, command, val;
+	bool isS, isQ, isPq;
+		
+	while(scanf("%d", &test) != EOF){
+		
+		isS = isQ = isPq = true;
+		si S;
+		qi Q;
+		pqi P;
+		
+		while(test--){
+			scanf("%d %d", &command, &val);
+			switch(command){
+				case 1: 
+					if(isS) S.push(val);
+					if(isQ) Q.push(val);
+					if(isPq) P.push(val);
+					break;
+					
+				case 2:
+					if(isS) {
+						if(S.empty() || S.top() != val ) isS = false;
+						else S.pop();
+					}
+					if(isQ){
+						if(Q.empty() || Q.front() != val ) isQ = false;
+						else Q.pop();
+					}
+					if(isPq){
+						if(P.empty() || P.top() != val) isPq = false;
+						else P.pop();
+					}
+					break;
+				}
+		}
+		
+		if(isS && !isQ && !isPq) cout << "stack";
+		else if(!isS && isQ && !isPq) cout << "queue";
+		else if(!isS && !isQ && isPq) cout << "priority queue";
+		else if(!isS && !isQ && !isPq) cout << "impossible";
+		else cout << "not sure";
+		
+		cout << "\n";
+	}
+}
