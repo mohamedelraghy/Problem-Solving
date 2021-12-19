@@ -2,6 +2,7 @@
 using namespace std;
 
 #define P(x) cout << #x << " = { " << x << " }\n"
+#define Time cerr << "Time Taken: " << (float)clock() / CLOCKS_PER_SEC  << " Secs" << "\n";
 #define INF 1000000000  
 
 // shortcuts for "common" data types in contests
@@ -24,8 +25,11 @@ int main(){
     {
         ll n; cin >> n;
         for(int k = 2; k < 30; k++){
-            ll x = n / (pow(2, k) - 1);
-            if ((n % (ll)(pow(2, k) - 1)) == 0) {cout << x << endl; break;}
+            ll x =  (1 << k) - 1;
+            if (n % x == 0) {cout << n / x << endl; break;}
         }
     }
+
+    Time;
+
 }
