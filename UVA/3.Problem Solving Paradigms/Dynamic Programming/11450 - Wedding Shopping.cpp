@@ -23,13 +23,13 @@ int shop(int money, int g){
     if(money < 0) return -1000000000;
     if(g == C) return M - money;
 
-    if(memo[money][g] != -1) return memo[money][g];
-    int ans = -1;
+    int &ans = memo[money][g];
+    if(ans != -1) return ans;
+    
     for(int model = 1; model <= price[g][0]; model++)
         ans = max(ans, shop(money - price[g][model], g + 1));
 
-     
-    return memo[money][g] = ans;
+    return ans;
 }
 
 int main(){
