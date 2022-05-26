@@ -20,13 +20,8 @@ int main(){
 			}
 		}
 		if(i % 2 == 0){
-			if(l){
-				l = false;
-				r = true;
-			}else if(r){
-				r = false;
-				l = true;
-			}
+			l = !l;
+			r = !r;
 		}	
 			
 		cout << "\n";
