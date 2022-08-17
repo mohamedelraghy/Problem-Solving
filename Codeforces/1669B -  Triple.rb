@@ -17,4 +17,3 @@ while t > 0
     puts ans
     t -= 1
 end
-
