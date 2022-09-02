@@ -23,23 +23,14 @@ int main(){
     while (t--) {
         cin >> n;
         vi a(n);
-        bool ans = false;
-        for(int i = 0; i < n; i++) cin >> a[i];
-
-        for(int i = 1; i < n; i++){
-            if(i == 1 && a[i] != a[i - 1] && a[i] != a[i + 1]){
-                cout << i + 1 << endl;
-                ans = true;
-                break;
-            }
-            else if(a[i] != a[i - 1] && i != 1 ){
-                cout << i + 1 << endl;
-                ans = true;
-                break;
-            }
-        }
-        if(!ans) cout << 1 << endl;
         
+        for(int &e : a) cin >> e;
+
+        vi copy = a;
+        sort(copy.begin(), copy.end());
+
+        for(int i = 0; i < n; i++){
+            if(a[i] != copy[1]) cout << i + 1 << endl;
+        }
     }
-    
 }
