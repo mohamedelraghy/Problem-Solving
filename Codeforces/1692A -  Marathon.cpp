@@ -21,12 +21,12 @@ int main(){
 
     while (t--)
     {
-        vi marthon(4);
-        for (int &e : marthon) cin >> e;
-
-        int a = marthon[0];
-        int count = 0;
-        for(int i = 1; i < 4; i++) if(marthon[i] > a) count++;
+        int a, b, count = 0;
+        cin >> a;
+        for(int i = 1; i < 4; i++) {
+            cin >> b;
+            if(b > a) count++;
+        }
 
         cout << count << endl;
     }
