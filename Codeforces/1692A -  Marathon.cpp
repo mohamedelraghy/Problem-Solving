@@ -21,14 +21,9 @@ int main(){
 
     while (t--)
     {
-        int a, b, count = 0;
-        cin >> a;
-        for(int i = 1; i < 4; i++) {
-            cin >> b;
-            if(b > a) count++;
-        }
-
-        cout << count << endl;
+        int a, b, c, d; cin >> a >> b >> c >> d;
+        int ans = (b > a) + (c > a) + (d > a);
+        cout << ans << endl;
     }
     
 }
