@@ -28,14 +28,10 @@ int main(){
     while(t--){
         int n, m;
         cin >> n >> m;
-        vii pos(m);
-        for(int i = 0; i < m; i++){
-            cin >> pos[i].first;
-            cin >> pos[i].second;
-        }
+        int pos1, pos2;
 
-        if(n == m || m > n ) cout << "NO" << endl;
-        else if(m < n) cout << "YES" << endl;
+        for(int i = 0; i < m; i++) cin >> pos1 >> pos2;
 
+        cout << (n <= m ? "NO" : "YES") << endl;
     }
 }
