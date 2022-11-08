@@ -20,7 +20,7 @@ typedef vector<int>     vi;
 void solve(){
     int n; cin >> n;
     char c;
-    int cntQ(0), cntA(0);
+    int cntQ(0);
     for(int i = 0; i < n; i++){
         cin >> c;
         cntQ += (c == 'Q');
