@@ -18,16 +18,12 @@ typedef vector<int>     vi;
 void solve(){
   int n; cin >> n;
   ll s, sum = 0;
-  vi bouns;
+  priority_queue<int> q;
 
   while(n--){
     cin >> s;
-    if(s > 0) bouns.push_back(s);
-    else if(s == 0 && !bouns.empty()){
-      sort(bouns.begin(), bouns.end());
-      sum += bouns.back();
-      bouns.pop_back();
-    }
+    q.push(s);
+    if(s == 0) sum += q.top(), q.pop();
   }
 
   cout << sum << endl;
