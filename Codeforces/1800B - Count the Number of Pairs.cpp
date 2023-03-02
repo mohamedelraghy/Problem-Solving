@@ -12,6 +12,7 @@ typedef long long       ll;
 typedef pair<int, int>  ii;
 typedef vector<ii>      vii;
 typedef vector<int>     vi;
+typedef vector<vi>      vv;
 
 // common memset setting 
 // memset(memo, -1, sizeof memo); // initialize DP memoization table with -1
@@ -21,37 +22,23 @@ typedef vector<int>     vi;
 void solve(){
     int n, k;
     cin >> n >> k;
+    vv cnt(26, vi(2, 0));
     string s;
     cin >> s;
 
+    for(auto c : s)
+        if(islower(c)) ++cnt[c - 'a'][0];
+        else ++cnt[c - 'A'][1];
     
-    map<char, int> myMap;
-    for(int i = 0; i < s.size(); i++) myMap[s[i]]++;
-
-    int ans = 0, val = 0;
-    for(auto i : myMap){
-        if(i.first >= 'A' && i.first <= 'Z'){
-            if(myMap[i.first] && myMap[tolower(i.first)]){
-                val = min(myMap[i.first], myMap[tolower(i.first)]);
-                ans += val;
-                myMap[i.first] -= val;
-                myMap[tolower(i.first)] -= val;
-            }
-        }
-    }
-    
-    int count = 0, res = 0;
-    
-    for(auto i : myMap){
-        if(count >= k) break;
-        if(i.second >= 2){
-            res = i.second / 2;
-            ans += min(res, k);
-            count += min(res, k);
-        }
+    int res = 0;
+    for(auto v : cnt){
+        res += min(v[0], v[1]);
+        int rem = min(abs(v[0] - v[1]) >> 1, k);
+        k -= rem;
+        res += rem;
     }
 
-    cout << ans << endl;
+    cout << res << endl;
 }
 
 
